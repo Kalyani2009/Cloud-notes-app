@@ -6,4 +6,4 @@ This is a simple beginner HTML, CSS and JavaScript project.
 - index.html
 - style.css
 - script.js
-- README.md
+- README.md 
