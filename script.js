@@ -25,4 +25,16 @@ import {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 console.log("firebase connected!");
+document.querySelector("button").addEventListener("click", async () => {
+    try {
+        await addDoc(collection(db, "messages"), {
+            text: "Hello from GitHub!",
+            createdAt: new Date()
+        });
 
+        alert("Data saved to Firebase!");
+    } catch (error) {
+        console.error(error);
+        alert("Error: " + error.message);
+    }
+});
