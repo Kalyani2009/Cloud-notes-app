@@ -1,12 +1,12 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 import {
-  getFirestore,
-  collection,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-  // Import the functions you need from the SDKs you nee
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    getFirestore,
+    collection,
+    addDoc
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -22,19 +22,32 @@ import {
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-console.log("firebase connected!");
-document.querySelector("button").addEventListener("click", async () => {
+const app = initializeApp(firebaseConfig);
+
+// Connect Firestore
+const db = getFirestore(app);
+
+
+// Button
+const button = document.getElementById("saveButton");
+
+button.addEventListener("click", async () => {
+
     try {
+
         await addDoc(collection(db, "messages"), {
             text: "Hello from GitHub!",
             createdAt: new Date()
         });
 
         alert("Data saved to Firebase!");
+
     } catch (error) {
+
         console.error(error);
         alert("Error: " + error.message);
+
     }
+
 });
+  
